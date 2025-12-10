@@ -1,0 +1,333 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IndiGo Rostering Crisis — Watch & Insights</title>
+  <meta name="description" content="Watch the Mint video about the IndiGo rostering crisis with interactive timestamps, transcript, and curated takeaways." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #041025;
+      --bg2: #071627;
+      --card: rgba(255,255,255,0.04);
+      --muted: #a9c0d1;
+      --accent: #00d0d9;
+      --glass-border: rgba(255,255,255,0.06);
+      --radius: 12px;
+      --maxwidth: 1100px;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#e6f3fb;background:linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
+    .container{max-width:var(--maxwidth);margin:28px auto;padding:18px;}
+    .layout{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    @media(max-width:980px){.layout{grid-template-columns:1fr}.player-aside{order:-1}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);padding:14px;border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.55)}
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 12px;color:var(--muted);font-size:14px}
+    /* sticky player */
+    .player-wrap{position:sticky;top:16px;align-self:start}
+    .player{width:100%;height:210px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    @media(min-width:1200px){.player{height:260px}}
+    .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+    .chip{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-weight:600;font-size:13px;color:var(--muted)}
+    /* chapters */
+    .chapters{display:grid;gap:8px;margin-top:14px}
+    .chapter{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+    .chapter:hover{transform:translateY(-2px);transition:transform .15s}
+    .ts{font-weight:700;color:var(--accent);min-width:70px;text-align:right}
+    .title{font-size:14px}
+    .muted{color:var(--muted);font-size:13px}
+    /* bento grid below */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    .box{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+    .quote{font-style:italic;color:#cfeff5}
+    /* transcript */
+    .transcript{max-height:320px;overflow:auto;padding:8px;border-radius:8px;background:rgba(3,8,16,0.45);border:1px solid rgba(255,255,255,0.02);margin-top:10px}
+    .transcript p{margin:8px 0;font-size:13px;color:var(--muted)}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent),#36d9de);padding:9px 12px;border-radius:9px;color:#022428;font-weight:700;border:0;cursor:pointer}
+    .linklike{background:none;border:0;color:var(--accent);cursor:pointer;font-weight:600}
+    footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:center}
+    /* small helpers */
+    .small{font-size:13px;color:var(--muted)}
+    .active{outline:2px solid rgba(0,208,217,0.14);box-shadow:0 4px 18px rgba(0,208,217,0.06)}
+    /* nice hover for timestamp */
+    .chapter .ts:hover{color:#8ef7fa}
+    /* search box for transcript */
+    .search-wrap{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .search-input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf8ff}
+    /* subtle focus */
+    .search-input:focus{outline:2px solid rgba(0,208,217,0.12)}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="card">
+      <header>
+        <div>
+          <h1>IndiGo rostering crisis — Watch, jump & read</h1>
+          <div class="small">Video: <strong>Mint</strong> · Interactive summary + transcript</div>
+        </div>
+        <div class="meta">
+          <div class="chip">Interactive</div>
+          <div class="chip">Mobile-first</div>
+          <div class="chip">Vanilla JS</div>
+        </div>
+      </header>
+
+```
+  <p class="lead">Watch the video inline, jump to key moments, and read curated takeaways and the transcript — all from a single page.</p>
+
+  <div class="layout">
+    <!-- MAIN COLUMN -->
+    <section>
+      <div class="card">
+        <h3 style="margin-top:0">Player & Quick Actions</h3>
+        <div class="player-aside player-wrap">
+          <div id="player" class="player card" aria-label="YouTube player"></div>
+          <div class="controls">
+            <button id="playPause" class="btn">Play / Pause</button>
+            <button id="muteBtn" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Mute/Unmute</button>
+            <button id="openYT" class="linklike">Open on YouTube</button>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="small">Tip: Click any chapter to seek the video instantly. The player is sticky on wide screens so you can take notes while watching.</div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin-top:0">Curated Takeaways</h3>
+        <div class="grid" id="takeawayGrid">
+          <div class="box">
+            <strong>Core issue</strong>
+            <p class="muted">IndiGo allegedly failed to properly manage crew rosters after new FTL guidelines; the ministry calls it an internal operational lapse.</p>
+          </div>
+          <div class="box">
+            <strong>Government action</strong>
+            <p class="muted">Ministry took over airport operations briefly, launched inquiries and warns of strict action for non-compliance.</p>
+          </div>
+          <div class="box">
+            <strong>Impact</strong>
+            <p class="muted">Thousands of passengers affected; refunds and operational fixes demanded; push for more airline diversity.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top:12px">Detailed chapters</h4>
+        <div class="chapters" id="chapters">
+          <!-- Chapters populated by JS -->
+        </div>
+
+        <div style="margin-top:12px" class="small">If you want automatic chapter extraction from the transcript, say "auto-chapters" and I'll add them.</div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin-top:0">Transcript & Notes</h3>
+        <div class="search-wrap">
+          <input id="searchInput" class="search-input" placeholder="Search transcript (press Enter)" />
+          <button id="searchBtn" class="btn">Search</button>
+          <button id="clearSearch" class="linklike">Clear</button>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:10px;align-items:center">
+          <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="showTimestamps" checked /> <span class="small">Show timestamps</span></label>
+          <button id="toggleTranscript" class="linklike">Toggle transcript</button>
+        </div>
+
+        <div id="transcript" class="transcript" aria-live="polite" style="margin-top:10px">
+          <!-- transcript content populated by JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ASIDE -->
+    <aside class="player-aside">
+      <div class="card">
+        <h3 style="margin-top:0">About this video</h3>
+        <p class="muted">Union Civil Aviation Minister Ram Mohan Naidu criticizes IndiGo for roster mismanagement after new Flight Time Limitations (FTL) rules; ministry stresses safety and transparency.</p>
+
+        <h4 style="margin-top:12px;margin-bottom:6px">Quick links</h4>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a id="ytLink" class="linklike" target="_blank" rel="noopener">Open on YouTube</a>
+          <a href="#transcript" class="linklike">Jump to transcript</a>
+        </div>
+
+        <h4 style="margin-top:12px">Stats</h4>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+          <div class="chip">Length: ~4:58</div>
+          <div class="chip">Source: Mint</div>
+        </div>
+
+        <h4 style="margin-top:12px">Highlighted quote</h4>
+        <div class="quote">"IndiGo was supposed to manage the crew &amp; roster through its day-to-day operations... we will take very strict action."</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    Built with vanilla JS • Save this file as <code>index.html</code> and open in a browser. Video ID: <strong>FcAkliffCY0</strong>
+  </footer>
+</div>
+```
+
+  </main>
+
+  <script>
+    /****************************************************************
+     * Single-file interactive site JS
+     * - Loads YouTube IFrame API
+     * - Populates chapters (seconds -> mm:ss)
+     * - Seeks video on chapter click
+     * - Loads transcript from embedded data (below)
+     ****************************************************************/
+
+    // --- VIDEO CONFIG ---
+    const YT_VIDEO_ID = 'FcAkliffCY0'; // Mint video
+    let player;
+    let isPlayerReady = false;
+
+    // Chapters — seconds chosen from transcript markers (approx)
+    const CHAPTERS = [
+      {t: 0.8,  title: 'Opening/Context'},
+      {t: 62.63, title: 'FTL guidelines & consultations'},
+      {t: 81.19, title: 'Implementation notes & timeline'},
+      {t: 129.11, title: 'Operations differences across airlines'},
+      {t: 192.31, title: 'IndiGo roster failure & aftermath'},
+      {t: 236.00, title: 'Ministry intervention & airport control'},
+      {t: 262.56, title: 'Inquiry & strict action warning'},
+      {t: 286.16, title: 'Closing / summary'}
+    ];
+
+    // Transcript data (extracted from uploaded transcript). Keep it concise — timestamps in seconds.
+    const TRANSCRIPT = [
+      {t: 0.8, text: "Sir,"},
+      {t: 10.39, text: "M A M SSI"},
+      {t: 62.63, text: "1st November 2025: new FTL guidelines introduced after stakeholder consultation."},
+      {t: 68.08, text: "There were multiple stakeholder consultations; no compromise on safety."},
+      {t: 81.19, text: "22 FTL guidelines; 15 effective July, 7 from Nov 1."},
+      {t: 129.11, text: "Airlines vary in operations; some have night ops, northeast, ATR fleets."},
+      {t: 159.59, text: "Uniform FTL blanket required variations for different airlines."},
+      {t: 192.31, text: "This is day-to-day operational thing IndiGo should have managed."},
+      {t: 204.48, text: "IndiGo was supposed to manage crew and roster through normal operations."},
+      {t: 236.00, text: "Ministry took over the situation at airports after observing the issue."},
+      {t: 249.20, text: "Passengers faced a lot of difficulty over the two days."},
+      {t: 262.56, text: "We are doing an inquiry and will take very strict action."},
+      {t: 286.16, text: "[Music] [Applause]"}
+    ];
+
+    // UTIL: format seconds to mm:ss
+    function formatTs(s){
+      s = Math.floor(s);
+      const mm = Math.floor(s/60);
+      const ss = s % 60;
+      return mm + ':' + String(ss).padStart(2,'0');
+    }
+
+    // Populate chapters list
+    function buildChapters(){
+      const parent = document.getElementById('chapters');
+      parent.innerHTML = '';
+      CHAPTERS.forEach((c, idx) => {
+        const el = document.createElement('div');
+        el.className = 'chapter';
+        el.setAttribute('data-t', c.t);
+        el.innerHTML = `<div><div class="title">${c.title}</div><div class="muted">Click to jump</div></div><div class="ts">${formatTs(c.t)}</div>`;
+        el.addEventListener('click', ()=> seekTo(c.t));
+        parent.appendChild(el);
+      });
+    }
+
+    // Populate transcript
+    function buildTranscript(showTimestamps=true){
+      const div = document.getElementById('transcript');
+      div.innerHTML = '';
+      TRANSCRIPT.forEach(seg=>{
+        const p = document.createElement('p');
+        p.setAttribute('data-t', seg.t);
+        if(showTimestamps){
+          const btn = document.createElement('button');
+          btn.className = 'linklike';
+          btn.style.marginRight='8px';
+          btn.textContent = formatTs(seg.t);
+          btn.addEventListener('click', ()=> seekTo(seg.t));
+          p.appendChild(btn);
+        }
+        const txt = document.createTextNode(' ' + seg.text);
+        p.appendChild(txt);
+        div.appendChild(p);
+      });
+    }
+
+    // SEARCH transcript
+    function searchTranscript(q){
+      q = q.trim().toLowerCase();
+      const container = document.getElementById('transcript');
+      if(!q){
+        Array.from(container.children).forEach(n=>n.style.display='block');
+        return;
+      }
+      Array.from(container.children).forEach(n=>{
+        const txt = n.textContent.toLowerCase();
+        n.style.display = txt.includes(q) ? 'block' : 'none';
+      });
+    }
+
+    // SEEK function with safety (player must be ready)
+    function seekTo(seconds){
+      if(isPlayerReady && player && typeof player.seekTo === 'function'){
+        player.seekTo(seconds, true);
+        // also play
+        player.playVideo();
+      } else {
+        // fallback: open YouTube in new tab at timestamp
+        const url = `https://www.youtube.com/watch?v=${YT_VIDEO_ID}&t=${Math.floor(seconds)}s`;
+        window.open(url, '_blank');
+      }
+    }
+
+    // --- YouTube IFrame API loader ---
+    (function loadYouTube(){
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    })();
+
+    // This function will be called by the YouTube API
+    function onYouTubeIframeAPIReady(){
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: YT_VIDEO_ID,
+        playerVars: {
+          controls: 1,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event){
+      isPlayerReady = true;
+      // wire buttons
+      document.getElementById('playPause').addEventListener('click', ()=>{
+        const state = player.getPlayerState();
+        // state 1 = playing, 2 = paused
+        if(state === YT.PlayerState.PLAYING) player.pauseVideo();
+        else player.playVideo();
+      });
+      document.getElementById('muteBtn').addEventListener('click', ()=>{
+        if(player.isMuted()) player.unMute();
+        else player.mute();
+      });
+      const ytLink = document.getElementById('ytLink');
+      const openYT = document.getElementById('openYT'
